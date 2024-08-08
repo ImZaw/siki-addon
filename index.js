@@ -130,7 +130,6 @@ async function stream (type, id) {
     } else if (provider == "CimaNow") {
         linksData = await cimanow.loadLinks(data)
     }
-    console.log(linksData)
     return linksData.map(i=> {return {
         url: i.url,
         name: i.title,
