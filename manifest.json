@@ -1,0 +1,60 @@
+{
+    "id": "community.siki",
+    "version": "0.0.1",
+    "name": "Arabic sites",
+    "description": "Addon for streaming from arabic sites",
+    "logo": "favicon.png",
+    "background": "https://raw.githubusercontent.com/Stremio/stremio-art/main/originals/Ahlen%20Ken%20A.%20Batalon.png",
+    "contactEmail": "none",
+    "catalogs": [{
+		"type": "movie",
+		"id": "AkwamMovies",
+		"name": "Akwam",
+		"extra": []
+		},
+		{
+			"type": "series",
+			"id": "AkwamSeries",
+			"name": "Akwam",
+			"extra": []
+		},
+		{
+			"type": "movie",
+			"id": "CimaNowMovies",
+			"name": "CimaNow",
+			"extra": []
+		},
+		{
+			"type": "series",
+			"id": "CimaNowSeries",
+			"name": "CimaNow",
+			"extra": []
+		},
+		{
+			"type": "movie",
+			"id": "arabicmovies",
+			"name": "Arabic sites",
+			"extra": [{
+				"name": "search",
+				"isRequired": true
+			}]
+		},
+		{
+			"type": "series",
+			"id": "arabicseries",
+			"name": "Arabic sites",
+			"extra": [{
+				"name": "search",
+				"isRequired": true
+			}]
+		}],
+	"resources": [
+		"catalog",
+		"stream",
+		"meta"
+	],
+	"types": [
+		"movie",
+		"series"
+	]
+}
