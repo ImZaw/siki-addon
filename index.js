@@ -1,6 +1,7 @@
 const { Siki } = require("siki");
 const akwam = new Siki("akwam")
 const cimanow = new Siki("wecima")
+cimanow.providerClass.mainUrl = "https://arab-hnl6e7ta2pmy.runkit.sh/?url=https://wecima.show"
 function toMetaData(array, type, provider) {
     return array.map(i=> {
         let urlData = i.data
@@ -11,14 +12,14 @@ function toMetaData(array, type, provider) {
             name: i.title, 
             poster: i.posterUrl, 
             releaseInfo: i.year, 
-            imdbRating: i.rating, 
+            imdbRating: i.rating,
             genres: i.genres
     }})
 }
 async function catalog (type, id, extra) {
     try {
         if(id.includes("Akwam")) {
-            let data = await akwam.homePage()
+            let data = await akwam.homePage() ?? []
             if(id.includes("Movies")) {
                 let movies = data.find((item) => item.title == "Movies")
                 return toMetaData(movies.posts, "movie", "Akwam")
@@ -27,7 +28,7 @@ async function catalog (type, id, extra) {
                 return toMetaData(series.posts, "series", "Akwam")
             }
         } else if (id.includes("CimaNow")) {
-            let data = await cimanow.homePage()
+            let data = await cimanow.homePage() ?? []
             if(id.includes("Movies")) {
                 let movies = data.filter((item) => item.title.includes("Movies"))
                 let Allposts = []
@@ -50,8 +51,8 @@ async function catalog (type, id, extra) {
     }
 }
 async function search(type, query) {
-    let akwamData = await akwam.search(query)
-    let cimanowData = await cimanow.search(query)
+    let akwamData = await akwam.search(query) ?? []
+    let cimanowData = await cimanow.search(query) ?? []
     if(type == "movie") {
             let Allposts = []
             akwamData.filter(i=> i.tvType.name == "Movie").forEach(i=> {
@@ -105,7 +106,6 @@ async function meta (type, id) {
             })
         })
     }
-    console.log(metaData)
     return {
         id,
         type,
